@@ -6,18 +6,24 @@ let lookingForData = false;
         lookingForData=true;
         
         let urlParams = new URLSearchParams(window.location.search);
-
+        
+        
         let catid = urlParams.get("category");
+        console.log(catid);
         let endpoint = "http://wp.astraldesign.dk/wp-json/wp/v2/events?_embed&per_page=2&page=" + page
-          if (catid) { // DRY
+        
+        console.log("THIS IS THE CATEGORY: " + endpoint + "&categories=" + catid);
+          if (catid != 20) { // DRY
           fetch("http://wp.astraldesign.dk/wp-json/wp/v2/events?_embed&per_page=2&page=" + page + "&categories=" + catid)
               .then(e => e.json())
               .then(showEvents);
-
+              console.log("show categroy json");
+        
           } else {
           fetch("http://wp.astraldesign.dk/wp-json/wp/v2/events?_embed&per_page=2&page=" + page)
               .then(e => e.json())
               .then(showEvents);
+              console.log("ELSE")
 
         //not working
        
