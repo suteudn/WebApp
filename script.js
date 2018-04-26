@@ -13,19 +13,26 @@ let lookingForData = false;
         let endpoint = "http://wp.astraldesign.dk/wp-json/wp/v2/events?_embed&per_page=2&page=" + page
         
         console.log("THIS IS THE CATEGORY: " + endpoint + "&categories=" + catid);
-          if (catid != 20) { // DRY
+      /*  if (endpoint){
+            console.log("if started")
+             fetch(endpoint).then(e => e.json()).then(showEvents);
+            
+        }
+        */
+        
+          if (catid) { // DRY
           fetch("http://wp.astraldesign.dk/wp-json/wp/v2/events?_embed&per_page=2&page=" + page + "&categories=" + catid)
               .then(e => e.json())
               .then(showEvents);
-              console.log("show categroy json");
+              
         
-          } else {
+          } else{
           fetch("http://wp.astraldesign.dk/wp-json/wp/v2/events?_embed&per_page=2&page=" + page)
               .then(e => e.json())
               .then(showEvents);
               console.log("ELSE")
 
-        //not working
+        
        
     }
     }
